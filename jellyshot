@@ -78,10 +78,12 @@ else
   url="https://$SERVER$SUFFIX/$name"
 fi
 
-printf "%s\n" "$url"
+printf "\n%s\n" "$url"
 
 if type xclip &>/dev/null; then
   printf "%s" "$url" | xclip -i -selection clipboard
+  printf "%s" "$url" | xclip -i -selection primary
 elif type xsel &>/dev/null; then
   printf "%s" "$url" | xsel -ib
+  printf "%s" "$url" | xsel -ip
 fi
